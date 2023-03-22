@@ -26,7 +26,7 @@ class DatabaseConfig(BaseSettings):
 
 
 api = ApiConfig()
-# db = DatabaseConfig()
+db = DatabaseConfig()
 
 UNABLE_RATE_LIMIT = True
 
@@ -42,23 +42,23 @@ UPDATE_FETCH_DATA = datetime.timedelta(days=180)
 START_SEMESTER = int(datetime.datetime(2022, 8, 29).timestamp())
 BASE_WEEK_DELTA = 0
 
-# tortoise_config = {
-#     "connections": {
-#         "default": {
-#             "engine": "tortoise.backends.asyncpg",
-#             "credentials": {
-#                 "database": db.db,
-#                 "host": db.host,  # db for docker
-#                 "password": db.password,
-#                 "port": db.port,
-#                 "user": db.user,
-#             },
-#         }
-#     },
-#     "apps": {
-#         "main": {
-#             "models": ["app.models.db"],
-#             "default_connection": "default",
-#         }
-#     },
-# }
+tortoise_config = {
+    "connections": {
+        "default": {
+            "engine": "tortoise.backends.asyncpg",
+            "credentials": {
+                "database": db.db,
+                "host": db.host,  # db for docker
+                "password": db.password,
+                "port": db.port,
+                "user": db.user,
+            },
+        }
+    },
+    "apps": {
+        "main": {
+            "models": ["app.models.db"],
+            "default_connection": "default",
+        }
+    },
+}
